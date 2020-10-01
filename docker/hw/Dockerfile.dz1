@@ -1,0 +1,12 @@
+FROM alpine:latest
+
+RUN apk update --no-cache && apk add git
+ARG repo=test
+
+WORKDIR /data
+VOLUME /data
+
+ENV REPO=$repo
+CMD sh -c "git clone $REPO /data; echo $REPO"
+
+
